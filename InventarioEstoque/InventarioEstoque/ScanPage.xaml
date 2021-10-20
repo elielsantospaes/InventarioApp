@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="InventarioEstoque.ScanPage"
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+             >
+
+    <!-- Cria um grid com as regiões que serão usadas na tela -->
+    <Grid RowSpacing="0" ColumnSpacing="0" BackgroundColor="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="280"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="30"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Define a área que o scanner vai atuar dentro do grid (todas as células) -->
+        <zxing:ZXingScannerView 
+                x:Name="scanner" Grid.RowSpan="5" Grid.ColumnSpan="3"
+                IsScanning="True" 
+                OnScanResult="ZXingScannerView_OnScanResult" 
+            NavigationPage.HasNavigationBar="True"/>
+
+        <!-- desenha retângulos vazios para preencher as células em volta da janela do scanner -->
+
+        <BoxView Grid.Row="0" Grid.ColumnSpan="3" BackgroundColor="#80000000"/>
+        <BoxView Grid.Row="1" Grid.ColumnSpan="3" BackgroundColor="#80000000"/>
+        <BoxView Grid.Row="2" Grid.Column="0" BackgroundColor="#80000000"/>
+        <BoxView Grid.Row="2" Grid.Column="2" BackgroundColor="#80000000"/>
+        <BoxView Grid.Row="3" Grid.ColumnSpan="3" BackgroundColor="#80000000"/>
+        <BoxView Grid.Row="4" Grid.ColumnSpan="3" BackgroundColor="#80000000"/>
+
+        <!-- desenha a moldura da janela do scanner -->
+        <!-- Order: Top, Bottom, Left, Right -->
+        <BoxView Grid.Row="2" Grid.Column="1" BackgroundColor="White" HeightRequest="2" VerticalOptions="Start" HorizontalOptions="FillAndExpand"/>
+        <BoxView Grid.Row="2" Grid.Column="1" BackgroundColor="White" HeightRequest="2" VerticalOptions="End" HorizontalOptions="FillAndExpand"/>
+        <BoxView Grid.Row="2" Grid.Column="1" BackgroundColor="White" WidthRequest="2" HorizontalOptions="Start" VerticalOptions="FillAndExpand"/>
+        <BoxView Grid.Row="2" Grid.Column="1" BackgroundColor="White" WidthRequest="2" HorizontalOptions="End" VerticalOptions="FillAndExpand"/>
+
+        <Label Text="Aponte a câmera para a etiqueta" 
+               Grid.Row="0" Grid.ColumnSpan="3" Margin="0,5,20,20" BackgroundColor="Transparent" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Medium" />
+
+        <Label Text="com o código a ser lido" 
+               Grid.Row="1" Grid.ColumnSpan="3" Margin="0,0,20,20" BackgroundColor="Transparent" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Medium" />
+
+        <Label Text="Posicione o código no centro" 
+               Grid.Row="3" Grid.ColumnSpan="3" Margin="0,10,20,20" BackgroundColor="Transparent" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Medium" />
+
+        <Image Source="logotransparente.png" Opacity="40" 
+               Grid.Row="4" Grid.ColumnSpan="3" VerticalOptions="Center"/>
+
+        <ImageButton Grid.Row="5" Grid.Column="1" Source="botaoluz.png" WidthRequest="30" HeightRequest="30" BackgroundColor="Transparent" Clicked="ImagebuttonTorch_Clicked"/>
+    </Grid>
+
+</ContentPage> 

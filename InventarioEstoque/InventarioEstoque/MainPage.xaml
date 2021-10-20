@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="InventarioEstoque.MainPage"
+             BackgroundImage="FundoSplash5.png">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="Bem_vindo" TargetType="Label">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="FontSize" Value="25"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="HorizontalTextAlignment" Value="center"/>
+                <Setter Property="Margin" Value="10,0"/>
+                <Setter Property="TranslationY" Value="200"/>
+            </Style>
+            
+            <Style x:Key="Mensagem" TargetType="Label">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="Margin" Value="10,0"/>
+                <Setter Property="TranslationY" Value="250"/>
+                
+            </Style>            
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <StackLayout BackgroundColor="Black">
+        <Grid BackgroundColor="Transparent"
+                Opacity="0.8"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            
+            <Label Grid.Row="0" Text="Bem vindo!" Style="{StaticResource Bem_vindo}"/>
+            <Label Grid.Row="0" Text=" Toque no botão abaixo para iniciar o processo de inventário" Style="{StaticResource Mensagem}"/>
+            
+            <Button Grid.Row="1" 
+                Text ="Iniciar"
+                BackgroundColor="White"
+                Opacity="0.8"
+                WidthRequest="300"
+                HeightRequest="50"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Clicked="Iniciar_Clicked"
+            />
+
+            
+        </Grid>
+    </StackLayout>
+</ContentPage>

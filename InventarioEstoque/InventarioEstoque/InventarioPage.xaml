@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="InventarioEstoque.InventarioPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="Mensagem" TargetType="Label">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="FontSize" Value="25"/>
+                <Setter Property="HorizontalTextAlignment" Value="Start"/>
+                <Setter Property="Margin" Value="10,0"/>
+                <Setter Property="TranslationY" Value="200"/>
+                <Setter Property="MaxLines" Value="3"/>
+            </Style>
+
+            <Style x:Key="Botao" TargetType="Button">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="BackgroundColor" Value="LightBlue"/>
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="WidthRequest" Value="150"/>
+                <Setter Property="HeightRequest" Value="50"/>
+            </Style>
+
+            <Style x:Key="Entrada_de_texto" TargetType="Entry">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="PlaceholderColor" Value="Black"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="Margin" Value="10,0"/>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <!--Cria um frama que contem uma Grid com duas colunas uma para o texto e outra para o batão QRcode-->
+            <Frame Grid.Row="0" Margin="0,4,0,0" Padding="0" BorderColor="Transparent" HorizontalOptions="Fill" CornerRadius="12" BackgroundColor="White" VerticalOptions="Center" >
+                <Grid Padding="2" BackgroundColor="Transparent" HorizontalOptions="Fill">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="83"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80*"/>
+                        <ColumnDefinition Width="20*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Label com o texto ao lado do botão Margin="ESDI"-->
+                    <Label Text="Toque no botão ao lado para ler um código ou digite o código no campo abaixo."
+                            BackgroundColor="Transparent"
+                            Grid.Column="0"
+                            Margin="2,0,0,0" 
+                            MaxLines="4"
+                            FontSize="16" 
+                            HorizontalTextAlignment= "Start"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Center"                       
+                        />
+
+                    <!--Botão QRcode para chamada de consulta por scaneamento-->
+                    <ImageButton 
+                            Grid.Column="1"
+                            Padding="0"
+                            Source="qrcode.png" 
+                            Clicked="ImageButton_Clicked" 
+                            BackgroundColor="Transparent"
+                            WidthRequest="70"
+                            HeightRequest="70"
+                            HorizontalOptions="CenterAndExpand"
+                        />
+                </Grid>
+            </Frame>
+            <Entry x:Name="CodProd_Entry" Placeholder="Código do protudo" Style="{StaticResource Entrada_de_texto}"/>
+            <Entry x:Name="Qtd_Entry" Keyboard="Numeric" Placeholder="Quantidade" Style="{StaticResource Entrada_de_texto}"/>
+            <Entry x:Name="Descricao_Entry" Placeholder="Descrção do protudo" IsVisible="False" Completed="Descricao_Entry_Completed" Style="{StaticResource Entrada_de_texto}"/>
+
+            <Button Text = " Inventariar " Clicked = "Inventatiar_Clicked" Style="{StaticResource Botao}"/>
+            <Button Text = " Ler dados " Clicked = "Leitura_Clicked" Style="{StaticResource Botao}"/>
+            <Button Text = " Deletar dados " Clicked = "Deletar_Clicked" Style="{StaticResource Botao}"/>
+            <Button Text = " Exportar csv " Clicked = "Exportar_csv_Clicked" Style="{StaticResource Botao}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
